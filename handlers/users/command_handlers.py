@@ -28,7 +28,7 @@ async def process_callback_menu_command(message: types.Message):
 @dp.message_handler(ChatTypeFilter(chat_type=types.ChatType.PRIVATE), commands=['report'])
 async def process_report_command(message: types.Message):
     args = message.get_args()
-    await bot.send_message(config['MODER_CHAT'], f'REPORT\n'
+    await bot.send_message(config['MODERS_CHAT'], f'REPORT\n'
                                                  f'ОТ: @{message.from_user.username} ({message.from_user.id})\n'
                                                  f'ТЕКСТ: {args}')
     await message.answer('Репорт отправлен, с вами свяжутся для решения проблемы.')

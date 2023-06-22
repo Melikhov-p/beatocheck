@@ -12,4 +12,4 @@ async def process_admin_command_state(message: types.Message, state: FSMContext)
 
 @dp.message_handler(chat_id=config['SUPERUSER_ID'], commands=['moders_alert'])
 async def process_admin_command_moders_alert(message: types.Message):
-    await bot.send_message(config['MODER_CHAT'], f'{message.get_args()}'.upper(), parse_mode='html')
+    await bot.send_message(config['MODERS_CHAT'], f'{message.get_args()}'.upper(), parse_mode='html')

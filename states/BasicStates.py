@@ -2,6 +2,7 @@ from aiogram.dispatcher.filters.state import StatesGroup, State
 
 
 # Состояния
+# Создание бита на пост
 class BeatState(StatesGroup):
     author = State()
     title = State()
@@ -10,3 +11,7 @@ class BeatState(StatesGroup):
     price = State()
     cover = State()
     confirm = State()
+
+
+class ReportState(StatesGroup):
+    report = State()

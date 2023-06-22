@@ -83,10 +83,10 @@ async def get_beat_info_confirm(message: types.Message, state: FSMContext):
 async def process_send_beat_in_channel(callback: types.CallbackQuery, state: FSMContext):
     await state.update_data(confirm=callback.data)
     beat_data = await state.get_data()
-    await bot.send_message(config['MODER_CHAT'], f'🔥🔥🔥Новая заявка на пост🔥🔥🔥\n\n'
+    await bot.send_message(config['MODERS_CHAT'], f'🔥🔥🔥Новая заявка на пост🔥🔥🔥\n\n'
                                                  f'От: {callback.from_user.username} ({callback.from_user.id})\n')  # Отправка поста в админ канал на модерацию
-    await bot.send_audio(config['MODER_CHAT'], audio=beat_data['tagged_beat'])
-    await bot.send_photo(config['MODER_CHAT'], photo=beat_data['cover'], caption=f"""
+    await bot.send_audio(config['MODERS_CHAT'], audio=beat_data['tagged_beat'])
+    await bot.send_photo(config['MODERS_CHAT'], photo=beat_data['cover'], caption=f"""
 <b>{beat_data['author']} - {beat_data['title']}</b>
 
 <i>{beat_data['tags']}</i>
