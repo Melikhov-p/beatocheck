@@ -10,6 +10,3 @@ class BeatState(StatesGroup):
     price = State()
     cover = State()
     confirm = State()
-
-class BuyBeatState(StatesGroup):
-    beat_id = State()

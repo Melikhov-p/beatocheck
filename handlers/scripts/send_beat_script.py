@@ -1,11 +1,13 @@
 import os
 from aiogram.dispatcher import FSMContext
+
+from handlers.users.callback_handlers import process_callback_menu_btn
 from loader import dp, bot, config
 from aiogram import types
 from states.BasicStates import BeatState
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from keyboards.reply_keyboards import cancel_kb
-from keyboards.admin_chat_keyboards import accept_post_btn, decline_post_btn
+from keyboards.moder_chat_keyboards import accept_post_btn, decline_post_btn
 
 # --- СЦЕНАРИЙ ДОБАВЛЕНИЯ БИТА В КАНАЛ ---
 @dp.callback_query_handler(lambda c: c.data == 'send_beat_btn')  # отправка бита в канал
@@ -43,7 +45,7 @@ async def get_beat_price(message: types.Message, state: FSMContext):
 @dp.message_handler(state=BeatState.cover, content_types=['photo'])
 async def get_beat_cover(message: types.Message, state: FSMContext):
     await state.update_data(cover=message.photo[-1].file_id)
-    await bot.send_message(message.from_user.id, 'Теперь <b>аудио-файл с <u>тегами автора</u></b>', parse_mode='html')
+    await bot.send_message(message.from_user.id, 'Теперь <b>аудио-файл с <u>тегами автора</u>, в формате MP3</b>', parse_mode='html')
     await BeatState.tagged_beat.set()
 @dp.message_handler(state=BeatState.cover, content_types=['text'])  # если получили не фото
 async def process_cancel_command(message: types.Message):
@@ -55,7 +57,7 @@ async def get_beat_tagged_beat(message: types.Message, state: FSMContext):
     await state.update_data(tagged_beat=message.audio.file_id)
     await bot.send_message(message.from_user.id, 'И наконец <b>цену</b>', parse_mode='html')
     await BeatState.price.set()
-@dp.message_handler(state=BeatState.tagged_beat, content_types=['text'])  # если получили не фото
+@dp.message_handler(state=BeatState.tagged_beat, content_types=['audio'])  # если получили не фото
 async def process_cancel_command(message: types.Message):
     await message.answer('Отправь именно аудио файл, если хочешь прекратить отправь /cancel')
 
@@ -96,7 +98,6 @@ user_id:{callback.from_user.id}
     await bot.send_message(callback.from_user.id, f'<b>{beat_data["author"]} - {beat_data["title"]}</b> отправлен на модерацию, как только его одобрят, он появится на витрине @beatocheck', parse_mode='html')
     await state.finish()
     await callback.message.delete()
-    # await process_callback_menu_btn(callback)
 
 
 @dp.callback_query_handler(lambda c: c.data == 'beat_info_confirm_no', state=BeatState.confirm)  # Если окончательную инфу о бите не подтвердили

@@ -14,9 +14,9 @@ async def process_cancel_command(message: types.Message, state: FSMContext):
 
 @dp.message_handler(ChatTypeFilter(chat_type=types.ChatType.PRIVATE), commands=['start'])
 async def process_start_command(message: types.Message):
-    await bot.send_message(message.from_user.id, f"<b>Beat'o'check BOT</b>\n\n "
-                                                 f"⏩Выстави на продажу свой бит в пару кликов\n"
-                                                 f"⏩Купи интересующий тебя инструментал", parse_mode='html', reply_markup=inline_enter_kb)
+    await bot.send_message(message.from_user.id, f"<b>Beat'o'check BOT</b>\n\n"
+                                                 f" ⏩Выстави на продажу свой бит в пару кликов\n\n"
+                                                 f" ⏩Купи интересующий тебя инструментал", parse_mode='html', reply_markup=inline_enter_kb)
 
 
 @dp.message_handler(ChatTypeFilter(chat_type=types.ChatType.PRIVATE), commands=['menu'])

@@ -7,7 +7,7 @@ inline_enter_kb.add(inline_enter_btn)
 
 # Основное меню
 menu_send_beat_btn = InlineKeyboardButton(f"🎵 Отправить Бит 🎵", callback_data='send_beat_btn')
-menu_buy_beat_btn = InlineKeyboardButton(f"💵 Купить Бит 💵", callback_data='buy_beat_btn')
+menu_buy_beat_btn = InlineKeyboardButton(f"💵 Как купить Бит 💵", callback_data='buy_beat_btn')
 menu_rules_btn = InlineKeyboardButton(f"📖 Правила 📖", callback_data='menu_rules_btn')
 menu_report_btn = InlineKeyboardButton(f"❗ Возникли проблемы ❗", callback_data='menu_report_btn')
 menu_info_btn = InlineKeyboardButton(f"❓ Справка ❓", callback_data='menu_info_btn')
