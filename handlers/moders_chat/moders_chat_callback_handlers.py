@@ -3,7 +3,7 @@ from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from loader import dp, bot, config
 from aiogram import types
 import re
-from states.AdminChatStates import DeclinePostState
+from states.ModerChatStates import DeclinePostState
 
 
 # Callback's модерации поста
@@ -24,6 +24,7 @@ async def process_callback_accept_post_to_channel(callback: types.CallbackQuery)
 @dp.callback_query_handler(lambda callback: callback.data == 'admin_decline_post')
 async def process_callback_decline_post_to_channel(callback: types.CallbackQuery, state: FSMContext):
     await state.update_data(declined_user_id=re.findall(r'user_id:.*', callback.message.caption)[0].replace('user_id:', ''))
+    await state.update_data(moder_id=callback.from_user.id)
     callback.message.caption = re.sub(r'audio:.*', '', callback.message.caption)
     callback.message.caption = re.sub(r'user_id:.*', '', callback.message.caption)
     await callback.message.edit_caption(f'{callback.message.caption}\n\n--------------------\n❌ОТКЛОНЕНА❌', parse_mode='html')
@@ -35,7 +36,8 @@ async def process_callback_decline_post_to_channel(callback: types.CallbackQuery
 @dp.message_handler(state=DeclinePostState.decline_reason)
 async def get_decline_reason(message: types.Message, state: FSMContext):
     state_data = await state.get_data()
-    decline_reason = message.text
-    await bot.send_message(state_data['declined_user_id'], f'К сожалению, твоя заявка отклонена, по причине:\n\n'
-                                                           f'{decline_reason}')
-    await state.finish()
+    if message.from_user.id == state_data['moder_id']:
+        decline_reason = message.text
+        await bot.send_message(state_data['declined_user_id'], f'К сожалению, твоя заявка отклонена, по причине:\n\n'
+                                                               f'{decline_reason}')
+        await state.finish()

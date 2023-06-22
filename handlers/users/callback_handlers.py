@@ -18,7 +18,8 @@ async def process_callback_report_btn(callback: types.CallbackQuery):
 
 @dp.callback_query_handler(ChatTypeFilter(chat_type=types.ChatType.PRIVATE), lambda callback: callback.data == 'menu_info_btn')
 async def process_callback_info_btn(callback: types.CallbackQuery):
-    await bot.send_message(callback.from_user.id, 'Все основные команды есть в левом нижнем углу чата.\n\n '
+    await bot.send_message(callback.from_user.id, 'Все основные команды есть в левом нижнем углу чата.\n\n'
+                                                  'Кнопки меню:\n'
                                                   ' <b>-<u>Отправить бит</u></b>: запускает сценарий создания поста с твоим битом.\n'
                                                   ' <b>-<u>Купить бит</u></b>: запускает сценарий покупки бита.\n'
                                                   ' <b>-<u>Возникли проблемы</u></b>: отправить репорт с возникшей проблемой.\n\n'
