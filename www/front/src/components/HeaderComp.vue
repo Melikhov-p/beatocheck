@@ -23,7 +23,7 @@ const user = false
         </div>
         <div class="mt-8">
           <ul class="flex items-center gap-10">
-            <li class="pb-1 border-b border-b-dark-submarine text-slate-300 hover:border-light-galaxy hover:cursor-pointer hover:text-slate-50">Маркет</li>
+            <a href="/"><li class="pb-1 border-b border-b-dark-submarine text-slate-300 hover:border-light-galaxy hover:cursor-pointer hover:text-slate-50">Маркет</li></a>
             <li class="pb-1 border-b border-b-dark-submarine text-slate-300 hover:border-light-galaxy hover:cursor-pointer hover:text-slate-50">Битмейкеры</li>
             <li class="pb-1 border-b border-b-dark-submarine text-slate-300 hover:border-light-galaxy hover:cursor-pointer hover:text-slate-50">Новости</li>
           </ul>

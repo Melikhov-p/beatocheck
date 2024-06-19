@@ -50,29 +50,37 @@
                 <h1>MP3 Аренда</h1>
                 <div class="relative">
                   <input type="text" class="bg-input-disabled p-5 outline-0 focus:bg-input-focus" placeholder="Цена" />
-                  <span class="absolute text-3xl z-20 right-5 top-4">₽</span>
+                  <span class="absolute text-xl z-20 right-5 top-4">₽</span>
                 </div>
               </div>
               <div class="rounded bg-light-submarine p-5 flex flex-col gap-5">
                 <h1>WAV Аренда</h1>
                 <div class="relative">
                   <input type="text" class="bg-input-disabled p-5 outline-0 focus:bg-input-focus" placeholder="Цена" />
-                  <span class="absolute text-3xl z-20 right-5 top-4">₽</span>
+                  <span class="absolute text-xl z-20 right-5 top-4">₽</span>
                 </div>
               </div>
               <div class="rounded bg-light-submarine p-5 flex flex-col gap-5">
                 <h1>Полные права</h1>
                 <div class="relative">
                   <input type="text" class="bg-input-disabled p-5 outline-0 focus:bg-input-focus" placeholder="Цена" />
-                  <span class="absolute text-3xl z-20 right-5 top-4">₽</span>
+                  <span class="absolute text-xl z-20 right-5 top-4">₽</span>
                 </div>
               </div>
             </div>
           </div>
           <input type="submit" value="Загрузить" class="mt-5 p-5 border border-input-light-success bg-input-dark-success text-dark-success hover:bg-input-light-success hover:text-light-success hover:cursor-pointer" />
         </div>
-        <div class="bg-grey-blue rounded w-1/3 h-1/3 ">
-          <img src="/cover.jpeg" />
+        <div class=" w-1/3 h-1/3 flex-col">
+          <div class="bg-grey-blue rounded">
+            <img src="/cover.jpeg" />
+          </div>
+          <div class="flex justify-center mt-5">
+            <div class="w-full flex relative p-0.5 rounded-md max-w-sm bg-gradient-to-r from-indigo-700 to-sky-700">
+              <label for="wav" class="w-full text-center p-5 rounded bg-dark-submarine bg-opacity-75 hover:cursor-pointer hover:bg-transparent text-white font-medium">Выбрать обложку</label>
+              <input type="file" class="hidden" ref="image" id="wav" accept="audio/*" />
+            </div>
+          </div>
         </div>
       </div>
     </div>

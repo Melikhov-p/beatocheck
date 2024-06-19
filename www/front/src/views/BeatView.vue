@@ -1,10 +1,8 @@
 <script setup>
 import { ref } from 'vue'
 
-const selectedLicense = ref({})
-
 function SelectLicense(id) {
-  for(let i = 1; i <= 4; i++) {
+  for(let i = 1; i <= 3; i++) {
     document.getElementById(`license-${i}`).classList.remove('bg-deep-ocean')
   }
   document.getElementById(id).classList.add('bg-deep-ocean')

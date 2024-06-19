@@ -38,6 +38,9 @@ function checkUsername() {
       <input type="text" class="rounded bg-light-submarine p-5 w-full outline-0 focus:bg-input-focus" placeholder="Логин" id="username" @change="checkUsername()" />
       <span class="absolute text-text-error z-20 right-5 top-1/3 hidden" id="error-username">Логин уже занят</span>
     </div>
+    <div class="w-full relative">
+      <input type="text" class="rounded bg-light-submarine p-5 w-full outline-0 focus:bg-input-focus" placeholder="Псевдоним" id="nickname" />
+    </div>
     <input type="email" class="rounded bg-light-submarine p-5 w-full outline-0 focus:bg-input-focus" placeholder="E-Mail" />
     <input type="password" class="rounded bg-light-submarine p-5 w-full outline-0 focus:bg-input-focus" placeholder="Пароль" id="password" @change="checkPassword()" />
     <div class="w-full relative">
